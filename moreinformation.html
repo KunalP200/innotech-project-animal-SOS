@@ -35,6 +35,10 @@
       <input type="hidden" id="longitude" name="longitude">
       <br><br>
 
+      <!-- Current Location Button -->
+      <button type="button" id="current-location-btn">Use Current Location</button>
+      <br><br>
+
       <!-- Google Map -->
       <div style="height: 400px; margin-top: 15px;">
         <div id="map" style="height: 100%; width: 100%;"></div>
@@ -97,6 +101,34 @@
         document.getElementById("longitude").value = position.lng();
       });
     }
+
+    // Geolocation to fetch current location
+    document.getElementById("current-location-btn").addEventListener("click", () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const currentLocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+
+            // Update map and marker position
+            map.setCenter(currentLocation);
+            map.setZoom(15);
+            marker.setPosition(currentLocation);
+
+            // Update hidden inputs with lat/lng
+            document.getElementById("latitude").value = currentLocation.lat;
+            document.getElementById("longitude").value = currentLocation.lng;
+          },
+          (error) => {
+            alert("Error fetching current location. Please try again.");
+          }
+        );
+      } else {
+        alert("Geolocation is not supported by your browser.");
+      }
+    });
 
     // Initialize map on page load
     window.onload = initMap;
