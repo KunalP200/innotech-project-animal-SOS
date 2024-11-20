@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal SOS - More Information</title>
+  <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+  <header>
+    <h1>Animal SOS - More Information</h1>
+    <p>Provide additional details to help us better understand the situation.</p>
+  </header>
+
+  <section>
+    <h2>Additional Details</h2>
+    <form id="more-info-form" action="contact.html" method="post">
+      <!-- Size of Animal -->
+      <label for="animal-size">Size of Animal:</label><br>
+      <label for="small">
+        <input type="radio" id="small" name="animal-size" value="small" required> Small
+      </label>
+      <label for="medium">
+        <input type="radio" id="medium" name="animal-size" value="medium"> Medium
+      </label>
+      <label for="big">
+        <input type="radio" id="big" name="animal-size" value="big"> Big
+      </label>
+      <br><br>
+
+      <!-- Location -->
+      <label for="location">Location:</label>
+      <input type="text" id="autocomplete" placeholder="Enter the animal's location" required>
+      <input type="hidden" id="latitude" name="latitude">
+      <input type="hidden" id="longitude" name="longitude">
+      <br><br>
+
+      <!-- Google Map -->
+      <div style="height: 400px; margin-top: 15px;">
+        <div id="map" style="height: 100%; width: 100%;"></div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit">Next</button>
+    </form>
+  </section>
+
+  <!-- Google Maps and Places API Scripts -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYWg8pe9k4x6LiooFbUEqvkXyJg_AHAJ4&libraries=places"
+    defer
+  ></script>
+  <script>
+    let map, marker;
+
+    function initMap() {
+      // Initialize the map centered on Ghaziabad
+      const ghaziabad = { lat: 28.6692, lng: 77.4538 };
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: ghaziabad,
+        zoom: 11,
+      });
+
+      // Initialize the marker
+      marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+      });
+
+      // Autocomplete feature
+      const autocomplete = new google.maps.places.Autocomplete(
+        document.getElementById("autocomplete"),
+        { types: ["geocode"], componentRestrictions: { country: "in" } } // Restrict to India
+      );
+
+      // Set the map view and marker location on place selection
+      autocomplete.addListener("place_changed", () => {
+        const place = autocomplete.getPlace();
+        if (place.geometry) {
+          const location = place.geometry.location;
+          map.setCenter(location);
+          map.setZoom(15); // Zoom in on the selected location
+          marker.setPosition(location);
+
+          // Update hidden inputs with lat/lng
+          document.getElementById("latitude").value = location.lat();
+          document.getElementById("longitude").value = location.lng();
+        } else {
+          alert("No details available for the input: '" + place.name + "'");
+        }
+      });
+
+      // Update lat/lng when marker is dragged
+      google.maps.event.addListener(marker, "dragend", () => {
+        const position = marker.getPosition();
+        document.getElementById("latitude").value = position.lat();
+        document.getElementById("longitude").value = position.lng();
+      });
+    }
+
+    // Initialize map on page load
+    window.onload = initMap;
+  </script>
+</body>
+</html>

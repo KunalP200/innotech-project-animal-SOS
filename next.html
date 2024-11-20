@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal SOS - Next Step</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Animal SOS - Additional Details</h1>
+    <p>Please provide additional information about the animal's condition.</p>
+  </header>
+
+  <section>
+    <h2>Animal Condition</h2>
+    <form id="animal-condition-form" action="moreinformation.html" method="get">
+      <!-- Animal Condition Dropdown -->
+      <label for="animal-condition">Condition:</label>
+      <select id="animal-condition" name="animal-condition" required>
+        <option value="" disabled selected>Select the condition</option>
+       
+        <option value="anxious">Anxious</option>
+        <option value="aggressive">Aggressive</option>
+        <option value="injured">Injured</option>
+        <option value="sick">Sick</option>
+        <option value="good">unknown</option>
+      </select><br><br>
+
+      <!-- Next Button -->
+      <button type="submit">Next</button>
+    </form>
+  </section>
+</body>
+</html>

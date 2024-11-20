@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal SOS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="navbar">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+    <h1>Animal SOS</h1>
+    <p>Report animal emergencies and provide detailed health descriptions.</p></br>
+     <p> near by animal welfare organisation notified and help the animal as soon as possible
+    </p>
+  </header>
+
+  <!-- Form Section -->
+  <section id="report-form">
+    <h2>Animal Welfare</h2>
+
+    <form id="animal-health-form" action="next.html" method="get">
+      
+      <label for="animal-type">Animal Type</label>
+      <select id="animal-type" name="animal-type" required>
+        <option value="" disabled selected>animal type</option>
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+        <option value="Cow">Cow</option>
+        <option value="Bird">Bird</option>
+        <option value="Bird">Buffalo</option>
+        
+      </select>
+
+
+
+
+      <label for="health-description">How many animals need help</label>
+      <textarea id="health-description" name="health-description" placeholder="how many needs help" rows="3" required></textarea>
+
+      <button type="submit">Next</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

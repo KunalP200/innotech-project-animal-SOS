@@ -1,0 +1,52 @@
+form {
+    display: flexbox;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  form label {
+    font-weight: bold;
+  }
+  
+  form input[type="radio"] {
+    margin-right: 2px;
+  }
+  
+  form input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  form button {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #47cbff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #3ed2e5;
+  }
+  #small{
+   margin-left: 24px;
+  }
+  #big{
+    margin-left: 40px;
+  }
+  
+  #map {
+   
+    height: 400px; /* The height is 400 pixels */
+    width: 100%;
+  }
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
