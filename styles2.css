@@ -2,6 +2,9 @@ form {
     display: flexbox;
     flex-direction: column;
     gap: 15px;
+
+   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7DbL7pJKpPMks2N8kQuwoMjzEbTIAz5MMgg&s');
+   height: 150px;
   }
   
   form label {
@@ -17,6 +20,7 @@ form {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    
   }
   
   form button {
@@ -50,3 +54,6 @@ form {
     margin: 0;
     padding: 0;
   }
+ header{
+  background-color: aqua;
+ }
